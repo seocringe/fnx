@@ -1,0 +1,282 @@
+## **Этот лог содержит информацию о проверке доступности веб-сайта и его DNS записях.**
+
+1. **HTTP запрос к сайту**: `http://moresex.com.ua` вернул ошибку 404, что означает, что запрашиваемая страница не найдена на сервере. Это может быть связано с тем, что страница была удалена или перемещена, и теперь URL больше не действителен.
+
+   ```bash
+   HTTP/1.1 404 Not Found
+   Date: Sat, 18 Nov 2023 13:40:03 GMT
+   Content-Type: text/html
+   Content-Length: 146
+   Connection: keep-alive
+   Vary: Accept-Encoding
+   ```
+
+2. **Информация о DNS**: Следующий блок данных относится к DNS записям для веб-сайта. Вывод подробно показывает процесс резолвинга имени, начиная от корневых DNS серверов, вплоть до серверов, ответственных за домен moresex.com.ua.
+
+   ```bash
+   .			514924	IN	NS	a.root-servers.net.
+   ...
+   moresex.com.ua.		28800	IN	NS	nsb3.srv53.org.
+   ...
+   moresex.com.ua.		3600	IN	A	51.68.107.5
+   moresex.com.ua.		3600	IN	A	51.68.97.214
+   ...
+   Name:	moresex.com.ua
+   Address: 51.68.97.214
+   Name:	moresex.com.ua
+   Address: 51.68.107.5
+   ```
+
+3. **Сканирование портов**: Последняя часть лога относится к результатам сканирования портов с использованием утилиты nmap. Это показывает, какие порты открыты на сервере, и какие службы вероятно запущены.
+
+   ```bash
+   PORT STATE SERVICE
+   7/tcp open echo
+   ...
+   80/tcp open http
+   ...
+   443/tcp open https
+   ...
+   Nmap done: 1 IP address (1 host up) scanned in 94.78 seconds
+   ```
+
+В этом примере видно, что порты 80 (HTTP) и 443 (HTTPS) открыты, что ожидаемо для веб-сервера. Однако множество других портов также открыто, что может указывать на широкий спектр служб, запущенных на этом сервере.
+
+**## Из лога можно выделить следующую дополнительную информацию:**
+
+1. **Местоположение сервера**: Первая строка лога указывает, что IP-адрес 51.68.107.5, который принадлежит веб-сайту, находится в Великобритании.
+
+   ```bash
+   Country[UNITED KINGDOM][GB], IP[51.68.107.5]
+   ```
+
+2. **Сервера имен (NS)**: Для домена `moresex.com.ua` указаны несколько серверов имен, которые отвечают за разрешение его DNS записей.
+
+   ```bash
+   moresex.com.ua.		28800	IN	NS	nsb3.srv53.org.
+   moresex.com.ua.		28800	IN	NS	nsb1.srv53.net.
+   ...
+   ```
+
+3. **Ответственный почтовый сервер (MX)**: Для домена `moresex.com.ua` указан ответственный почтовый сервер `mail.imena.com.ua`.
+
+   ```bash
+   moresex.com.ua mail is handled by 10 mail.imena.com.ua.
+   ```
+
+4. **Время отклика**: Отмечено, что время отклика сервера составляет 0.086 секунды, что является достаточно быстрым временем отклика.
+
+   ```bash
+   Host is up (0.086s latency).
+   ```
+
+5. **Обратная DNS запись**: Для IP-адреса 51.68.97.214 есть обратная DNS запись `ip214.ip-51-68-97.eu`.
+
+   ```bash
+   rDNS record for 51.68.97.214: ip214.ip-51-68-97.eu
+   ```
+
+6. **Открытые порты и службы**: Большое количество открытых портов на сервере указывает на то, что сервер предоставляет множество различных служб, включая HTTP (80), HTTPS (443), SSH (22), FTP (21) и многие другие.
+
+Важно отметить, что все эти данные являются публичной информацией и были получены с использованием стандартных сетевых инструментов и протоколов.
+
+```
+[1m[34mhttp://moresex.com.ua[0m [404 Not Found] [1mCountry[0m[[0m[22mUNITED KINGDOM[0m][[1m[31mGB[0m], [1mIP[0m[[0m[22m51.68.107.5[0m], [1mTitle[0m[[1m[33m404 Not Found[0m]
+
+; <<>> DiG 9.18.20 <<>> +trace moresex.com.ua
+;; global options: +cmd
+.			514924	IN	NS	a.root-servers.net.
+.			514924	IN	NS	b.root-servers.net.
+.			514924	IN	NS	c.root-servers.net.
+.			514924	IN	NS	d.root-servers.net.
+.			514924	IN	NS	e.root-servers.net.
+.			514924	IN	NS	f.root-servers.net.
+.			514924	IN	NS	g.root-servers.net.
+.			514924	IN	NS	h.root-servers.net.
+.			514924	IN	NS	i.root-servers.net.
+.			514924	IN	NS	j.root-servers.net.
+.			514924	IN	NS	k.root-servers.net.
+.			514924	IN	NS	l.root-servers.net.
+.			514924	IN	NS	m.root-servers.net.
+;; Received 239 bytes from 127.0.2.2#53(127.0.2.2) in 104 ms
+
+ua.			172800	IN	NS	bg.ns.ua.
+ua.			172800	IN	NS	nn.ns.ua.
+ua.			172800	IN	NS	ho1.ns.ua.
+ua.			172800	IN	NS	in1.ns.ua.
+ua.			172800	IN	NS	pch.ns.ua.
+ua.			172800	IN	NS	rcz.ns.ua.
+ua.			86400	IN	DS	48349 13 2 D8456DF0EAB0DB7D2422B4110722F5772D7B2F1FD41D487E956A54F1 039D53C8
+ua.			86400	IN	RRSIG	DS 8 1 86400 20231201050000 20231118040000 46780 . h1oeSMkWb2sISeZYsE3uIrP4LyGk/ev/nB+U6mgDQlEdQf7KKsn5LtM1 wt8WmEbqkLHSP+BZBKuTrJY9F8sJ+23dSU07s3ps1gVShpIdkaI+fJpi /39TUQ9ohcOe/DygrQ//S2xEbXiO+G2pkaYJ9KJF9O+2WT419UdZrSKX 6ajckTzgHtRcs/9edeCux5MGBcjEl5jqdvKLFNMu4Y2HJMqliSFVYYgE u4Uc0oDXcfYA1CZyptYdoxP6SfGg/4Jtfj2TIBqO8nDYaSTbskF0bEpQ JFS2kVpNudaOExJBMwj2rV4uOGPhuTw69v3+qkd6X6V9oOELEp/2O/BC 8wEu/Q==
+;; Received 795 bytes from 199.7.91.13#53(d.root-servers.net) in 34 ms
+
+;; communications error to 2001:67c:258::1#53: timed out
+;; communications error to 2001:67c:258::1#53: timed out
+;; communications error to 2001:67c:258::1#53: timed out
+;; communications error to 2a06:fb00:1::2:185#53: timed out
+moresex.com.ua.		28800	IN	NS	nsb3.srv53.org.
+moresex.com.ua.		28800	IN	NS	nsb1.srv53.net.
+moresex.com.ua.		28800	IN	NS	nsb1.srv53.com.
+moresex.com.ua.		28800	IN	NS	nsa1.srv53.net.
+moresex.com.ua.		28800	IN	NS	nsa4.srv53.org.
+moresex.com.ua.		28800	IN	NS	nsd1.srv53.org.
+moresex.com.ua.		28800	IN	NS	nsd3.srv53.com.
+moresex.com.ua.		28800	IN	NS	nsc3.srv53.com.
+moresex.com.ua.		28800	IN	NS	nsa3.srv53.com.
+moresex.com.ua.		28800	IN	NS	nsc1.srv53.org.
+moresex.com.ua.		28800	IN	NS	nsc2.srv53.net.
+moresex.com.ua.		28800	IN	NS	nsd2.srv53.net.
+d2ssk4rl9bt3dh5rtk2iv6bivrq6qp73.com.ua. 1800 IN NSEC3 1 1 0 9C596723E1FE3D39 D2ST3FK9I2E70NDJV1V5S6F4P1DEHF7H NS SOA RRSIG DNSKEY NSEC3PARAM
+d2ssk4rl9bt3dh5rtk2iv6bivrq6qp73.com.ua. 1800 IN RRSIG NSEC3 13 3 1800 20231207112847 20231112095847 46391 com.ua. LmK0YVvH3SpSOc2wyHMFa+50svap3nLuV8epISZZnOGtlgTdGuG9DU0D 2NZYYMEdW0vVIvf2lWOCbqKpVJggHQ==
+bprk445edegf4gda1l954ik6s0rqv7c6.com.ua. 1800 IN NSEC3 1 1 0 9C596723E1FE3D39 BPSGGUHB85IPCB1LTNMMHH72H6UGUS0T TXT RRSIG
+bprk445edegf4gda1l954ik6s0rqv7c6.com.ua. 1800 IN RRSIG NSEC3 13 3 1800 20231207112847 20231112095847 46391 com.ua. lH8TJmacMQlJej8Cd731WL5YRlgpi1wVEUiD2HG0+aGOGirltQyisgDw /4cI7zsAm9oGb4PxjAl65v/LDIP9lw==
+;; Received 705 bytes from 195.47.253.1#53(ho1.ns.ua) in 172 ms
+
+;; communications error to 2a02:2278:70eb:298:89:184:64:93#53: timed out
+moresex.com.ua.		3600	IN	A	51.68.107.5
+moresex.com.ua.		3600	IN	A	51.68.97.214
+moresex.com.ua.		3600	IN	NS	nsc1.srv53.org.
+moresex.com.ua.		3600	IN	NS	nsa4.srv53.org.
+moresex.com.ua.		3600	IN	NS	nsd2.srv53.net.
+moresex.com.ua.		3600	IN	NS	nsb1.srv53.com.
+moresex.com.ua.		3600	IN	NS	nsa3.srv53.com.
+moresex.com.ua.		3600	IN	NS	nsb1.srv53.net.
+moresex.com.ua.		3600	IN	NS	nsa1.srv53.net.
+moresex.com.ua.		3600	IN	NS	nsb3.srv53.org.
+moresex.com.ua.		3600	IN	NS	nsc2.srv53.net.
+moresex.com.ua.		3600	IN	NS	nsd1.srv53.org.
+moresex.com.ua.		3600	IN	NS	nsc3.srv53.com.
+moresex.com.ua.		3600	IN	NS	nsd3.srv53.com.
+;; Received 358 bytes from 78.27.225.67#53(nsc3.srv53.com) in 157 ms
+
+HTTP/1.1 404 Not Found
+Date: Sat, 18 Nov 2023 13:40:03 GMT
+Content-Type: text/html
+Content-Length: 146
+Connection: keep-alive
+Vary: Accept-Encoding
+
+Server:		127.0.2.2
+Address:	127.0.2.2 #53
+
+Non-authoritative answer:
+Name:	moresex.com.ua
+Address: 51.68.97.214
+Name:	moresex.com.ua
+Address: 51.68.107.5
+
+moresex.com.ua has address 51.68.97.214
+moresex.com.ua has address 51.68.107.5
+moresex.com.ua mail is handled by 10 mail.imena.com.ua.
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-11-18 15:40 EET
+Stats: 0:00:00 elapsed                                          ; 0 hosts completed (0 up), 1 undergoing Ping Scan
+Ping Scan Timing: About 100.00% done                            ; ETC: 15:40 (0:00:00 remaining)
+Nmap scan report for moresex.com.ua (51.68.97.214)
+Host is up (0.086s latency).
+Other addresses for moresex.com.ua (not scanned): 51.68.107.5
+rDNS record for 51.68.97.214: ip214.ip-51-68-97.eu
+
+PORT STATE SERVICE
+7/tcp open echo
+9/tcp open discard
+13/tcp open daytime
+21/tcp open ftp
+22/tcp open ssh
+23/tcp open telnet
+25/tcp filtered smtp
+26/tcp open rsftp
+37/tcp open time
+53/tcp open domain
+79/tcp open finger
+80/tcp open http
+81/tcp open hosts2-ns
+88/tcp open kerberos-sec
+106/tcp open pop3pw
+110/tcp open pop3
+111/tcp open rpcbind
+113/tcp open ident
+119/tcp open nntp
+135/tcp open msrpc
+139/tcp open netbios-ssn
+143/tcp open imap
+144/tcp open news
+179/tcp open bgp
+199/tcp open smux
+389/tcp open ldap
+427/tcp open svrloc
+443/tcp open https
+444/tcp open snpp
+445/tcp open microsoft-ds
+465/tcp open smtps
+513/tcp open login
+514/tcp open shell
+515/tcp open printer
+543/tcp open klogin
+544/tcp open kshell
+548/tcp open afp
+554/tcp open rtsp
+587/tcp open submission
+631/tcp open ipp
+646/tcp open ldp
+873/tcp open rsync
+990/tcp open ftps
+993/tcp open imaps
+995/tcp open pop3s
+1025/tcp open NFS-or-IIS
+1026/tcp open LSA-or-nterm
+1027/tcp open IIS
+1028/tcp open unknown
+1029/tcp open ms-lsa
+1110/tcp open nfsd-status
+1433/tcp open ms-sql-s
+1720/tcp open h323q931
+1723/tcp open pptp
+1755/tcp open wms
+1900/tcp open upnp
+2000/tcp open cisco-sccp
+2001/tcp open dc
+2049/tcp open nfs
+2121/tcp open ccproxy-ftp
+2717/tcp open pn-requester
+3000/tcp open ppp
+3128/tcp open squid-http
+3306/tcp open mysql
+3389/tcp open ms-wbt-server
+3986/tcp open mapper-ws_ethd
+4899/tcp open radmin
+5000/tcp open upnp
+5009/tcp open airport-admin
+5051/tcp open ida-agent
+5060/tcp open sip
+5101/tcp open admdog
+5190/tcp open aol
+5357/tcp open wsdapi
+5432/tcp open postgresql
+5631/tcp open pcanywheredata
+5666/tcp open nrpe
+5800/tcp open vnc-http
+5900/tcp open vnc
+6000/tcp open X11
+6001/tcp open X11:1
+6646/tcp open unknown
+7070/tcp open realserver
+8000/tcp open http-alt
+8008/tcp open http
+8009/tcp open ajp13
+8080/tcp open http-proxy
+8081/tcp open blackice-icecap
+8443/tcp open https-alt
+8888/tcp open sun-answerbook
+9100/tcp open jetdirect
+9999/tcp open abyss
+10000/tcp open snet-sensor-mgmt
+32768/tcp open filenet-tms
+49152/tcp open unknown
+49153/tcp open unknown
+49154/tcp open unknown
+49155/tcp open unknown
+49156/tcp open unknown
+49157/tcp open unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 94.78 seconds
+```
