@@ -1,0 +1,23 @@
+WhatWeb report for [1m[34mhttp://more-sex.com.ua/[0m
+Status    : 301 Moved Permanently
+Title     : [1m[33m301 Moved Permanently[0m
+IP        : 51.68.97.214
+Country   : [1m[31mUNITED KINGDOM, GB[0m
+
+Summary   : [1mRedirectLocation[0m[[0m[22mhttps://more-sex.com.ua/[0m]
+
+Detected Plugins:
+[ [1mRedirectLocation[0m ]
+	HTTP Server string location. used with http-status 301 and 
+	302 
+
+	String       : [1m[36mhttps://more-sex.com.ua/[0m (from location)
+
+HTTP Headers:
+	HTTP/1.1 301 Moved Permanently
+	Date: Sun, 19 Nov 2023 05:55:41 GMT
+	Content-Type: text/html
+	Content-Length: 162
+	Connection: close
+	Location: https://more-sex.com.ua/
+	
